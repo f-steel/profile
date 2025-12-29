@@ -1,201 +1,98 @@
 # Personal Profile Website
 
-A modern, responsive personal profile website built with Next.js, TypeScript, and Tailwind CSS.
+A modern, interactive personal profile and portfolio website showcasing professional information, skills, and achievements.
 
-## Features
+## About
 
-- 🎨 **Modern Design**: Beautiful gradient backgrounds and glass-morphism effects
-- 📱 **Responsive**: Fully responsive design that works on all devices
-- ⚡ **Fast**: Built with Next.js for optimal performance
-- 🎯 **SEO Optimized**: Proper metadata and Open Graph tags
-- 🎭 **Smooth Animations**: Hover effects and smooth transitions
-- 🎨 **Easy to Customize**: All content is stored in a separate data file
-- 🚀 **Vercel Ready**: Optimized for deployment on Vercel
+This is a single-page portfolio website that displays:
+- **Hero Section**: Name, title, bio, and social links with interactive mouse-tracking effects
+- **About Section**: Professional background, education, current role, and major achievements
+- **Skills Section**: Technical skills organized by category (Frontend, Backend, Tools)
+
+The site features smooth scroll animations, interactive hover effects, and a responsive design that works across all devices.
+
+## Tech Stack
+
+### Core Framework
+- **Next.js 15** - React framework with App Router for server-side rendering and optimal performance
+- **React 19** - UI library for building interactive components
+- **TypeScript** - Type-safe JavaScript for better code quality and developer experience
+
+### Styling
+- **Tailwind CSS 4** - Utility-first CSS framework for rapid UI development
+- **PostCSS** - CSS processing with Tailwind integration
+
+### Icons & Assets
+- **React Icons** - Icon library for social media and UI icons
+
+### Development Tools
+- **ESLint** - Code linting and quality assurance
+- **Turbopack** - Fast bundler for development (used with `--turbopack` flag)
+
+## Key Features
+
+- 🎨 **Modern UI**: Gradient backgrounds, glass-morphism effects, and smooth animations
+- 🖱️ **Interactive Elements**: Mouse-tracking effects on profile avatar
+- 📱 **Fully Responsive**: Mobile-first design that adapts to all screen sizes
+- ⚡ **Performance Optimized**: Built with Next.js for fast page loads and SEO
+- ♿ **Accessible**: Includes skip links, ARIA labels, and keyboard navigation support
+- 🎭 **Scroll Animations**: Intersection Observer API for fade-in animations as you scroll
 
 ## Getting Started
 
-1. **Install dependencies**:
+### Prerequisites
+- Node.js 18+ and npm
 
-   ```bash
-   npm install
-   ```
+### Installation
 
-2. **Run the development server**:
-
-   ```bash
-   npm run dev
-   ```
-
-3. **Open your browser** and navigate to [http://localhost:3000](http://localhost:3000)
-
-## Customization Guide
-
-### 1. Personal Information
-
-Edit `src/data/profile.ts` to update all your information:
-
-- Your name, title, and bio
-- Profile picture initials
-- Experience statistics
-- Education and current role
-- Skills and technologies
-- Social media links
-- Contact information
-
-**Example:**
-
-```typescript
-export const profileData: ProfileData = {
-  name: 'Your Name',
-  title: 'Your Title',
-  bio: 'Your bio description',
-  // ... update all other fields
-};
+1. Install dependencies:
+```bash
+npm install
 ```
 
-### 2. Colors and Theme
+2. Run the development server:
+```bash
+npm run dev
+```
 
-The website uses a purple-pink gradient theme. To change colors:
+3. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-- Update the gradient classes in `src/app/page.tsx`
-- Modify the custom CSS variables in `src/app/globals.css`
+### Build for Production
 
-### 3. Content Sections
+```bash
+npm run build
+npm start
+```
 
-The website includes:
-
-- **Hero Section**: Your name, title, and main call-to-action buttons
-- **About Section**: Your story, experience, and achievements
-- **Skills Section**: Your technical skills organized by category
-- **Contact Section**: Call-to-action for potential clients/employers
-
-### 4. Social Links
-
-Update the social media links in `src/data/profile.ts`:
-
-- GitHub
-- LinkedIn
-- Twitter
-- Email
-
-### 5. Metadata
-
-Update `src/app/layout.tsx` with:
-
-- Your name in the title
-- Your description
-- Relevant keywords
-- Open Graph information
-
-## File Structure
+## Project Structure
 
 ```
 src/
 ├── app/
-│   ├── page.tsx          # Main page component
-│   ├── layout.tsx        # Root layout and metadata
-│   └── globals.css       # Global styles and custom CSS
-├── data/
-│   └── profile.ts        # All profile content and data
-├── public/               # Static assets
-└── ...
+│   ├── page.tsx          # Main page component with all sections
+│   ├── layout.tsx        # Root layout with metadata
+│   └── globals.css       # Global styles
+└── data/
+    └── profile.ts        # Profile data and content (easily customizable)
 ```
 
-## Technologies Used
+## Customization
 
-- **Next.js 15** - React framework
-- **TypeScript** - Type safety
-- **Tailwind CSS** - Utility-first CSS framework
-- **React Icons** - Icon library
-- **ESLint** - Code linting
+All profile content is stored in `src/data/profile.ts`. Simply update the `profileData` object to customize:
+- Personal information (name, title, bio)
+- Education and work experience
+- Skills and technologies
+- Social media links
+- Achievements and stats
 
-## Deployment to Vercel
+## Deployment
 
-### Quick Deploy (Recommended)
-
-1. **Push your code to GitHub**
-2. **Go to [Vercel](https://vercel.com)**
-3. **Click "New Project"**
-4. **Import your GitHub repository**
-5. **Vercel will automatically detect Next.js and deploy**
-
-### Manual Deploy
-
-1. **Install Vercel CLI**:
-
-   ```bash
-   npm i -g vercel
-   ```
-
-2. **Deploy**:
-
-   ```bash
-   vercel
-   ```
-
-3. **Follow the prompts** to connect your project
-
-### Environment Variables
-
-No environment variables are required for basic deployment.
-
-### Custom Domain
-
-After deployment, you can add a custom domain in your Vercel project settings.
-
-## Other Deployment Platforms
-
-The app can be deployed to any platform that supports Next.js:
-
+The app is optimized for deployment on Vercel, but can be deployed to any platform that supports Next.js:
+- Vercel (recommended)
 - Netlify
 - AWS Amplify
 - Railway
-- DigitalOcean App Platform
-
-## Customization Examples
-
-### Change Profile Picture
-
-Replace the initials div with an actual image in `src/app/page.tsx`:
-
-```tsx
-<Image
-  src="/your-photo.jpg"
-  alt="Your Name"
-  width={128}
-  height={128}
-  className="rounded-full"
-/>
-```
-
-### Add More Sections
-
-You can easily add new sections like:
-
-- Portfolio/Projects
-- Blog posts
-- Testimonials
-- Resume download
-
-### Modify Skills
-
-Update the skills arrays in `src/data/profile.ts` to match your expertise.
-
-## Performance Optimization
-
-- **Built with Next.js 15** for optimal performance
-- **Tailwind CSS** for minimal CSS bundle size
-- **Optimized images** with Next.js Image component
-- **SEO ready** with proper metadata
-
-## Contributing
-
-Feel free to fork this project and customize it for your own use. If you make improvements that could benefit others, consider submitting a pull request.
-
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
-**Happy coding! 🚀**
+Built with ❤️ using Next.js and Tailwind CSS
