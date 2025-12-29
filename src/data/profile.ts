@@ -39,7 +39,7 @@ export const profileData: ProfileData = {
   title: "Full Stack Developer & Creative Problem Solver",
   bio: "I build beautiful, scalable web applications with modern technologies. Passionate about clean code, user experience, and continuous learning.",
   description:
-    "I'm a passionate developer with over 5 years of experience building web applications. I love turning complex problems into simple, beautiful, and intuitive solutions.",
+    "I'm a passionate developer with over 6 years of experience building web applications. I love turning complex problems into simple, beautiful, and intuitive solutions.",
   initials: "FS",
   stats: {
     experience: "6+",
