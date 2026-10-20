@@ -76,5 +76,5 @@ export const profileData: ProfileData = {
     github: "https://github.com/f-steel",
     linkedin: "https://uk.linkedin.com/in/fraser-steel-25868086",
   },
-  footerText: "2025 Fraser Steel. Built with Next.js and Tailwind CSS.",
+  footerText: "2026 Fraser Steel. Built with Next.js and Tailwind CSS.",
 };

@@ -18,6 +18,15 @@ export default function Home() {
   });
 
   useEffect(() => {
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (reducedMotion) {
+      setIsVisible({ hero: true, about: true, skills: true });
+      return;
+    }
+
     // Set initial window size
     const updateWindowSize = () => {
       setWindowSize({
@@ -35,7 +44,6 @@ export default function Home() {
       lastMouseX = e.clientX;
       lastMouseY = e.clientY;
 
-      // Use requestAnimationFrame for smooth updates
       if (animationFrameRef.current === null) {
         animationFrameRef.current = requestAnimationFrame(() => {
           setMousePosition({ x: lastMouseX, y: lastMouseY });
@@ -65,7 +73,6 @@ export default function Home() {
       refs.forEach((ref) => {
         if (ref) {
           observer.observe(ref);
-          // Check if section is already in view
           const rect = ref.getBoundingClientRect();
           const isInView = rect.top < window.innerHeight && rect.bottom > 0;
           if (isInView) {
@@ -78,7 +85,6 @@ export default function Home() {
       });
     };
 
-    // Use setTimeout to ensure DOM is ready
     const timeoutId = setTimeout(observeSections, 100);
 
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
@@ -106,7 +112,7 @@ export default function Home() {
       {/* Skip to main content link for keyboard navigation */}
       <a
         href="#main-content"
-        className="sr-only focus:w-auto focus:h-auto focus:p-4 focus:m-0 focus:overflow-visible focus:clip-auto focus:whitespace-normal focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-purple-600 focus:text-white focus:rounded-md focus:outline-none focus:ring-2 focus:ring-purple-400"
+        className="sr-only focus-visible:w-auto focus-visible:h-auto focus-visible:p-4 focus-visible:m-0 focus-visible:overflow-visible focus-visible:clip-auto focus-visible:whitespace-normal focus-visible:absolute focus-visible:top-4 focus-visible:left-4 focus-visible:z-50 focus-visible:bg-purple-600 focus-visible:text-white focus-visible:rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400"
       >
         Skip to main content
       </a>
@@ -184,11 +190,11 @@ export default function Home() {
             href="https://github.com/f-steel"
             target="_blank"
             rel="noopener noreferrer"
-            className="group border-2 border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-purple-500/50 relative overflow-hidden inline-block focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2 focus:ring-offset-slate-900"
+            className="group border-2 border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-purple-500/50 relative overflow-hidden inline-block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
             aria-label="View projects on GitHub"
           >
             <span className="relative z-10">View Projects</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" aria-hidden="true"></div>
           </a>
         </div>
 
@@ -203,7 +209,7 @@ export default function Home() {
             href={profileData.socialLinks.github}
             rel="noopener noreferrer"
             target="_blank"
-            className="text-gray-400 hover:text-purple-400 transition-all duration-300 transform hover:scale-125 hover:rotate-12 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2 focus:ring-offset-slate-900 rounded-full p-2"
+            className="text-gray-400 hover:text-purple-400 transition-all duration-300 transform hover:scale-125 hover:rotate-12 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900 rounded-full p-2"
             aria-label="Visit GitHub profile"
           >
             <FaGithub />
@@ -212,7 +218,7 @@ export default function Home() {
             href={profileData.socialLinks.linkedin}
             rel="noopener noreferrer"
             target="_blank"
-            className="text-gray-400 hover:text-purple-400 transition-all duration-300 transform hover:scale-125 hover:rotate-12 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2 focus:ring-offset-slate-900 rounded-full p-2"
+            className="text-gray-400 hover:text-purple-400 transition-all duration-300 transform hover:scale-125 hover:rotate-12 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900 rounded-full p-2"
             aria-label="Visit LinkedIn profile"
           >
             <FaLinkedin />
@@ -304,7 +310,7 @@ export default function Home() {
                       href={profileData.education.link}
                       rel="noopener noreferrer"
                       target="_blank"
-                      className="hover:text-purple-300 underline transition-colors focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2 focus:ring-offset-slate-900 rounded"
+                      className="hover:text-purple-300 underline transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900 rounded"
                       aria-label={`View details about ${profileData.education.degree} at ${profileData.education.school}`}
                     >
                       Details
@@ -325,7 +331,7 @@ export default function Home() {
                       href={profileData.currentRole.link}
                       rel="noopener noreferrer"
                       target="_blank"
-                      className="hover:text-purple-300 underline transition-colors focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2 focus:ring-offset-slate-900 rounded"
+                      className="hover:text-purple-300 underline transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900 rounded"
                       aria-label={`Visit ${profileData.currentRole.company} website`}
                     >
                       {profileData.currentRole.company}
